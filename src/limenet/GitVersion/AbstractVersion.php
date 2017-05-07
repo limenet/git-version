@@ -6,30 +6,31 @@ use InvalidArgumentException;
 use limenet\GitVersion\Formatters\FormatterInterface;
 use RuntimeException;
 
-class Version
+abstract class AbstractVersion
 {
-    protected $basepath;
+    protected $target;
 
     protected $formatter;
 
     protected $data;
 
+    protected $resolver;
     protected $resolved;
 
-    public function __construct(?string $path = null)
+    public function __construct(?string $target = null)
     {
-        if ($path) {
-            $this->setPath($path);
+        if ($target) {
+            $this->setTarget($target);
         }
     }
 
-    public function setPath(string $path)
+    public function setTarget(string $target)
     {
-        if (!file_exists($path)) {
-            throw new InvalidArgumentException('Supplied non-existing path: '.$path);
+        if (!file_exists($target)) {
+            throw new InvalidArgumentException('Supplied non-existing target: '.$target);
         }
 
-        $this->basepath = $path;
+        $this->target = $target;
     }
 
     public function setFormatter(FormatterInterface $formatter)
@@ -45,6 +46,7 @@ class Version
 
         $this->check();
 
+        $this->resolveBase();
         $this->resolve();
 
         $this->formatter->setData($this->data);
@@ -59,13 +61,13 @@ class Version
         }
     }
 
-    protected function resolve()
+    protected function resolveBase()
     {
         if ($this->resolved) {
             return;
         }
 
-        $resolver = new Resolver($this->basepath);
+        $this->resolver = new Resolver($this->target);
 
         $keys = ['tag', 'branch', 'commit'];
 
@@ -73,7 +75,7 @@ class Version
             $method = 'get'.ucfirst($key);
 
             try {
-                $datum = $resolver->{$method}();
+                $datum = $this->resolver->{$method}();
             } catch (RuntimeException $e) {
                 $datum = null;
             }
@@ -83,4 +85,6 @@ class Version
 
         $this->resolved = true;
     }
+
+    abstract protected function resolve();
 }

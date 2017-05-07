@@ -7,11 +7,11 @@ use RuntimeException;
 
 class Resolver
 {
-    protected $basepath;
+    protected $target;
 
-    public function __construct(string $path)
+    public function __construct(string $target)
     {
-        $this->basepath = realpath($path);
+        $this->target = $target;
     }
 
     public function getTag() : string
@@ -36,15 +36,9 @@ class Resolver
         return $commit;
     }
 
-    public function getLastCommitOfFile(string $file) : string
+    public function getCommitFile() : string
     {
-        $path = $this->basepath.'/'.$file;
-
-        if (!file_exists($path)) {
-            throw new InvalidArgumentException('File '.$path.' does not exist.');
-        }
-
-        $commit = $this->runCommandInBasepath(' git log -n 1 --format=%h '.$path);
+        $commit = $this->runCommandInBasepath('git log -n 1 --format=%h '.basename($this->target));
 
         return $commit;
     }
@@ -57,7 +51,7 @@ class Resolver
            2 => ['pipe', 'w'],  // stderr
         ];
 
-        $process = proc_open($command, $descriptorspec, $pipes, $this->basepath);
+        $process = proc_open($command, $descriptorspec, $pipes, is_file($this->target) ? pathinfo($this->target, PATHINFO_DIRNAME) : $this->target);
 
         $stderr = trim(stream_get_contents($pipes[2]));
 

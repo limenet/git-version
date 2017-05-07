@@ -14,7 +14,10 @@
 use limenet\GitVersion\Version;
 use limenet\GitVersion\Formatters\SemverFormatter;
 
-$gitVersion = new Version($baseDir);
-$version = $gitVersion->get(new SemverFormatter());
+$directory = new Directory($baseDir);
+$version = $directory->get(new SemverFormatter());
+
+$file = new File($baseDir);
+$version = $file->get(new SemverFormatter());
 
 ```
