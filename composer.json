@@ -1,0 +1,36 @@
+{
+    "name": "limenet/git-version",
+    "description": "PHP library to generate a version string based on a Git repository.",
+    "type": "liibrary",
+    "require": {
+        "spatie/regex": "^1.1"
+    },
+    "require-dev": {
+        "php": "^7.1",
+        "composer/semver": "^1.4",
+        "illuminate/support": "^5.4",
+        "moontoast/math": "^1.1",
+        "phpunit/phpunit": "^6.1",
+        "ramsey/uuid": "^3.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Linus Metzler",
+            "email": "linus.metzler@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "limenet\\": "src/limenet/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "limenet\\": "tests/limenet"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
