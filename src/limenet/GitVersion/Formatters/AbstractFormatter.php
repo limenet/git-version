@@ -26,6 +26,16 @@ abstract class AbstractFormatter implements FormatterInterface
         $this->data = $data;
     }
 
+    public function __toString() : string
+    {
+        return $this->formatAsString();
+    }
+
+    public function format() : string
+    {
+        return (string) $this;
+    }
+
     protected function formatAsString()
     {
         return Regex::replace(

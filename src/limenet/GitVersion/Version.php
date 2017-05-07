@@ -4,6 +4,7 @@ namespace limenet\GitVersion;
 
 use InvalidArgumentException;
 use limenet\GitVersion\Formatters\FormatterInterface;
+use RuntimeException;
 
 class Version
 {
@@ -12,6 +13,8 @@ class Version
     protected $formatter;
 
     protected $data;
+
+    protected $resolved;
 
     public function __construct(?string $path = null)
     {
@@ -58,12 +61,26 @@ class Version
 
     protected function resolve()
     {
+        if ($this->resolved) {
+            return;
+        }
+
         $resolver = new Resolver($this->basepath);
 
-        $this->data = [
-            'tag'    => $resolver->getTag(),
-            'branch' => $resolver->getBranch(),
-            'commit' => $resolver->getCommit(),
-        ];
+        $keys = ['tag', 'branch', 'commit'];
+
+        foreach ($keys as $key) {
+            $method = 'get'.ucfirst($key);
+
+            try {
+                $datum = $resolver->{$method}();
+            } catch (RuntimeException $e) {
+                $datum = null;
+            }
+
+            $this->data[$key] = $datum;
+        }
+
+        $this->resolved = true;
     }
 }
