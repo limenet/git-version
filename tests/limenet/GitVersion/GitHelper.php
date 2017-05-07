@@ -22,7 +22,6 @@ class GitHelper
         fclose($pipes[1]);
         fclose($pipes[2]);
 
-
         // It is important that you close any pipes before calling
         // proc_close in order to avoid a deadlock
         proc_close($process);
