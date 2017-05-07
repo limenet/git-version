@@ -2,7 +2,6 @@
 
 namespace limenet\GitVersion;
 
-use InvalidArgumentException;
 use limenet\GitVersion\Formatters\FormatterInterface;
 use RuntimeException;
 

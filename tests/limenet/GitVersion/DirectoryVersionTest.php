@@ -2,12 +2,8 @@
 
 namespace limenet\GitVersion;
 
-use Composer\Semver\VersionParser;
-use InvalidArgumentException;
 use limenet\GitVersion\Formatters\CustomFormatter;
-use limenet\GitVersion\Formatters\SemverFormatter;
 use PHPUnit\Framework\TestCase;
-use Ramsey\Uuid\Uuid;
 
 class DirectoryVersionTest extends TestCase
 {

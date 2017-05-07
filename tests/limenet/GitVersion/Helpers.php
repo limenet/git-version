@@ -2,10 +2,10 @@
 
 namespace limenet\GitVersion;
 
-use Ramsey\Uuid\Uuid;
-use limenet\GitVersion\Formatters\SemverFormatter;
-use limenet\GitVersion\Formatters\CustomFormatter;
 use Composer\Semver\VersionParser;
+use limenet\GitVersion\Formatters\CustomFormatter;
+use limenet\GitVersion\Formatters\SemverFormatter;
+use Ramsey\Uuid\Uuid;
 
 class Helpers
 {
@@ -43,6 +43,5 @@ class Helpers
 
         $vv = (new VersionParser())->normalize($v);
         $obj->assertInternalType('string', $v);
-
     }
 }

@@ -2,7 +2,6 @@
 
 namespace limenet\GitVersion;
 
-use InvalidArgumentException;
 use RuntimeException;
 
 class Resolver
