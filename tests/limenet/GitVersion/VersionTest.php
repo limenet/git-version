@@ -4,8 +4,8 @@ namespace limenet\GitVersion;
 
 use Composer\Semver\VersionParser;
 use InvalidArgumentException;
-use limenet\GitVersion\Formatters\SemverFormatter;
 use limenet\GitVersion\Formatters\CustomFormatter;
+use limenet\GitVersion\Formatters\SemverFormatter;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
@@ -33,7 +33,6 @@ class VersionTest extends TestCase
         $this->assertEmpty($version->get(new CustomFormatter('{tag}')));
         $this->assertNotEmpty($version->get(new CustomFormatter('{commit}')));
         $this->assertNotEmpty($version->get(new CustomFormatter('{branch}')));
-
     }
 
     public function testMissingFormatter() : void
