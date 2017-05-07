@@ -1,13 +1,12 @@
 <?php
+
 namespace limenet\GitVersion;
 
-use PHPUnit\Framework\TestCase;
-use limenet\GitVersion\GitHelper;
-use InvalidArgumentException;
-use Ramsey\Uuid\Uuid;
-use limenet\GitVersion\Version;
-use limenet\GitVersion\Formatters\SemverFormatter;
 use Composer\Semver\VersionParser;
+use InvalidArgumentException;
+use limenet\GitVersion\Formatters\SemverFormatter;
+use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
 
 class VersionTest extends TestCase
 {

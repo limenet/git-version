@@ -1,9 +1,11 @@
 <?php
 
 namespace limenet\GitVersion\Formatters;
+
 use Spatie\Regex\Regex;
 
-abstract class AbstractFormatter implements FormatterInterface {
+abstract class AbstractFormatter implements FormatterInterface
+{
     protected $data;
     protected $format;
 

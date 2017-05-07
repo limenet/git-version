@@ -3,9 +3,9 @@
 namespace limenet\GitVersion;
 
 use Ramsey\Uuid\Uuid;
-use RuntimeException;
 
-class GitHelper {
+class GitHelper
+{
     public static function clone($repo)
     {
         $dir = Uuid::uuid4()->toString();

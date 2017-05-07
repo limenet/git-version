@@ -5,14 +5,16 @@ namespace limenet\GitVersion;
 use InvalidArgumentException;
 use limenet\GitVersion\Formatters\FormatterInterface;
 
-class Version {
+class Version
+{
     protected $basepath;
 
     protected $formatter;
 
     protected $data;
 
-    public function __construct(?string $path = null) {
+    public function __construct(?string $path = null)
+    {
         if ($path) {
             $this->setPath($path);
         }
@@ -32,7 +34,8 @@ class Version {
         $this->formatter = $formatter;
     }
 
-    public function get(?FormatterInterface $formatter = null) {
+    public function get(?FormatterInterface $formatter = null)
+    {
         if ($formatter) {
             $this->setFormatter($formatter);
         }
@@ -42,6 +45,7 @@ class Version {
         $this->resolve();
 
         $this->formatter->setData($this->data);
+
         return $this->formatter->format();
     }
 
@@ -57,7 +61,7 @@ class Version {
         $resolver = new Resolver($this->basepath);
 
         $this->data = [
-            'tag' => $resolver->getTag(),
+            'tag'    => $resolver->getTag(),
             'branch' => $resolver->getBranch(),
             'commit' => $resolver->getCommit(),
         ];

@@ -5,11 +5,12 @@ namespace limenet\GitVersion;
 use InvalidArgumentException;
 use RuntimeException;
 
-class Resolver {
-
+class Resolver
+{
     protected $basepath;
 
-    public function __construct(string $path) {
+    public function __construct(string $path)
+    {
         $this->basepath = realpath($path);
     }
 

@@ -2,7 +2,8 @@
 
 namespace limenet\GitVersion\Formatters;
 
-class SemverFormatter extends AbstractFormatter {
+class SemverFormatter extends AbstractFormatter
+{
     // tag+branch-commit
 
     protected $format = '{tag}+{branch}-{commit}';
@@ -11,6 +12,7 @@ class SemverFormatter extends AbstractFormatter {
     {
         return $this->formatAsString();
     }
+
     public function format() : string
     {
         return (string) $this;
