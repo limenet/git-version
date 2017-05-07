@@ -3,6 +3,7 @@ namespace limenet\GitVersion;
 
 use PHPUnit\Framework\TestCase;
 use limenet\GitVersion\GitHelper;
+use InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 use limenet\GitVersion\Version;
 use limenet\GitVersion\Formatters\SemverFormatter;
@@ -35,6 +36,7 @@ class VersionTest extends TestCase
     public function testNonExistingPath() : void
     {
         $this->expectException(InvalidArgumentException::class);
-        new Version('/some/random/path/'.Uuid::uuid4()->toString());
+        $version = new Version();
+        $version->setPath('/some/random/path/'.Uuid::uuid4()->toString());
     }
 }
