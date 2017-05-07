@@ -16,10 +16,10 @@ class VersionTest extends TestCase
 
         $version = new Version($dir);
         $v = $version->get(new SemverFormatter());
-        $vv = (new VersionParser())->normalize($v);
 
-        var_dump($v,$vv);
         $this->assertNotEmpty($v);
+
+        $vv = (new VersionParser())->normalize($v);
         $this->assertInternalType('string', $v);
     }
 
