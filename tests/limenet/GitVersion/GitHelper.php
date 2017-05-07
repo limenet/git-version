@@ -18,6 +18,8 @@ class GitHelper
 
         $process = proc_open('git clone '.$repo.' '.$dir, $descriptorspec, $pipes, sys_get_temp_dir());
 
+        trim(stream_get_contents($pipes[2]));
+
         fclose($pipes[0]);
         fclose($pipes[1]);
         fclose($pipes[2]);
