@@ -2,10 +2,9 @@
 
 namespace limenet\GitVersion;
 
-use PHPUnit\Framework\TestCase;
-use limenet\GitVersion\Formatters\CustomFormatter;
 use limenet\GitVersion\Formatters\SemverFormatter;
 use limenet\GitVersion\Formatters\UrlFormatter;
+use PHPUnit\Framework\TestCase;
 
 class FileVersionTest extends TestCase
 {
@@ -45,10 +44,10 @@ class FileVersionTest extends TestCase
         $url = $version->get(new UrlFormatter(
             [
                 'scheme' => 'https',
-                'host' => 'limenet.ch',
-                'port' => 8443,
-                'path' => '/foo/bar',
-                'query' => 'foo=bar'
+                'host'   => 'limenet.ch',
+                'port'   => 8443,
+                'path'   => '/foo/bar',
+                'query'  => 'foo=bar',
             ]
         ));
         $this->assertSame($url, filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED | FILTER_FLAG_PATH_REQUIRED | FILTER_FLAG_QUERY_REQUIRED));

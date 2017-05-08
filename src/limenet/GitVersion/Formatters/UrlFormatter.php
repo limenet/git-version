@@ -2,14 +2,12 @@
 
 namespace limenet\GitVersion\Formatters;
 
-use League\Uri\Components\Scheme;
-use League\Uri\Components\UserInfo;
-use League\Uri\Components\HierarchicalPath;
 use League\Uri\Components\Host;
-use League\Uri\Components\Query;
 use League\Uri\Components\Path;
-use League\Uri\Schemes\Http as HttpUri;
 use League\Uri\Components\Port;
+use League\Uri\Components\Query;
+use League\Uri\Components\Scheme;
+use League\Uri\Schemes\Http as HttpUri;
 
 class UrlFormatter extends AbstractFormatter
 {
