@@ -17,10 +17,14 @@ abstract class AbstractVersion
     protected $resolver;
     protected $resolved;
 
-    public function __construct(?string $target = null)
+    public function __construct(?string $target = null, ?array $data = [])
     {
         if ($target) {
             $this->setTarget($target);
+        }
+
+        if ($data) {
+            $this->setExtraData($data);
         }
     }
 
@@ -38,6 +42,11 @@ abstract class AbstractVersion
         $this->formatter = $formatter;
     }
 
+    public function setExtraData(array $data)
+    {
+        $this->data = array_merge($this->data ?? [], $data);
+    }
+
     public function get(?FormatterInterface $formatter = null)
     {
         if ($formatter) {
@@ -51,7 +60,7 @@ abstract class AbstractVersion
 
         $this->formatter->setData($this->data);
 
-        return $this->formatter->format();
+        return (string) $this->formatter;
     }
 
     protected function check()

@@ -3,6 +3,7 @@
     "description": "PHP library to generate a version string based on a Git repository.",
     "type": "liibrary",
     "require": {
+        "league/uri": "^5.0",
         "spatie/regex": "^1.1"
     },
     "require-dev": {

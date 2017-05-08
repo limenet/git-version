@@ -9,12 +9,7 @@ abstract class AbstractFormatter implements FormatterInterface
     protected $data;
     protected $format;
 
-    public function __construct(?string $format = null)
-    {
-        if ($format) {
-            $this->setFormat($format);
-        }
-    }
+    abstract public function __construct();
 
     public function setFormat(string $format)
     {
@@ -23,7 +18,12 @@ abstract class AbstractFormatter implements FormatterInterface
 
     public function setData(array $data)
     {
-        $this->data = $data;
+        $this->data = array_merge($data, $this->data ?? []);
+    }
+
+    public function setExtraData(array $data)
+    {
+        $this->data = array_merge($this->data ?? [], $data);
     }
 
     public function __toString() : string
@@ -31,12 +31,7 @@ abstract class AbstractFormatter implements FormatterInterface
         return $this->formatAsString();
     }
 
-    public function format() : string
-    {
-        return (string) $this;
-    }
-
-    protected function formatAsString()
+    protected function formatAsString(?string $format = null)
     {
         return Regex::replace(
             [
@@ -49,7 +44,7 @@ abstract class AbstractFormatter implements FormatterInterface
                 $this->data['branch'],
                 $this->data['commit'],
             ],
-            $this->format
+            $format ?? $this->format
         )->result();
     }
 }
