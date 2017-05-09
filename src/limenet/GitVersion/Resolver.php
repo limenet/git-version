@@ -30,7 +30,7 @@ class Resolver
 
     public function getCommit() : string
     {
-        $commit = $this->runCommandInBasepath('git rev-parse --short=7 HEAD');
+        $commit = $this->runCommandInBasepath('git rev-parse HEAD');
 
         return $commit;
     }

@@ -40,6 +40,8 @@ class Helpers
         $obj->assertNotEmpty($v);
         $obj->assertNotEmpty($version->get(new CustomFormatter('{tag}')));
         $obj->assertNotEmpty($version->get(new CustomFormatter('{commit}')));
+        $obj->assertNotEmpty($version->get(new CustomFormatter('{commit_short}')));
+        $obj->assertTrue(strlen($version->get(new CustomFormatter('{commit_short}'))) < strlen($version->get(new CustomFormatter('{commit}'))));
 
         $vv = (new VersionParser())->normalize($v);
         $obj->assertInternalType('string', $v);

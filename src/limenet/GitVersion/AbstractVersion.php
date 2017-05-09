@@ -92,6 +92,8 @@ abstract class AbstractVersion
             $this->data[$key] = $datum;
         }
 
+        $this->data['commit_short'] = substr($this->data['commit'], 0, 8);
+
         $this->resolved = true;
     }
 
