@@ -7,7 +7,7 @@ use RuntimeException;
 
 class File extends AbstractVersion
 {
-    protected function resolve(?FormatterInterface $formatter = null)
+    protected function resolve(?FormatterInterface $formatter = null) : void
     {
         try {
             $commit = $this->resolver->getCommitFile();

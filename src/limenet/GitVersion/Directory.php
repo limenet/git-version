@@ -6,7 +6,7 @@ use limenet\GitVersion\Formatters\FormatterInterface;
 
 class Directory extends AbstractVersion
 {
-    protected function resolve(?FormatterInterface $formatter = null)
+    protected function resolve(?FormatterInterface $formatter = null) : void
     {
     }
 }

@@ -28,7 +28,7 @@ abstract class AbstractVersion
         }
     }
 
-    public function setTarget(string $target)
+    public function setTarget(string $target) : void
     {
         if (!file_exists($target)) {
             throw new InvalidArgumentException('Supplied non-existing target: '.$target);
@@ -37,17 +37,17 @@ abstract class AbstractVersion
         $this->target = $target;
     }
 
-    public function setFormatter(FormatterInterface $formatter)
+    public function setFormatter(FormatterInterface $formatter) : void
     {
         $this->formatter = $formatter;
     }
 
-    public function setExtraData(array $data)
+    public function setExtraData(array $data) : void
     {
         $this->data = array_merge($this->data ?? [], $data);
     }
 
-    public function get(?FormatterInterface $formatter = null)
+    public function get(?FormatterInterface $formatter = null) : string
     {
         if ($formatter) {
             $this->setFormatter($formatter);
@@ -63,14 +63,14 @@ abstract class AbstractVersion
         return (string) $this->formatter;
     }
 
-    protected function check()
+    protected function check() : void
     {
         if (!$this->formatter) {
             throw new InvalidArgumentException('No formatter set');
         }
     }
 
-    protected function resolveBase()
+    protected function resolveBase() : void
     {
         if ($this->resolved) {
             return;

@@ -42,7 +42,7 @@ class Resolver
         return $commit;
     }
 
-    protected function runCommandInBasepath(string $command)
+    protected function runCommandInBasepath(string $command) : string
     {
         $descriptorspec = [
            0 => ['pipe', 'r'],  // stdin

@@ -11,17 +11,17 @@ abstract class AbstractFormatter implements FormatterInterface
 
     abstract public function __construct();
 
-    public function setFormat(string $format)
+    public function setFormat(string $format) : void
     {
         $this->format = $format;
     }
 
-    public function setData(array $data)
+    public function setData(array $data) : void
     {
         $this->data = array_merge($data, $this->data ?? []);
     }
 
-    public function setExtraData(array $data)
+    public function setExtraData(array $data) : void
     {
         $this->data = array_merge($this->data ?? [], $data);
     }
@@ -31,7 +31,7 @@ abstract class AbstractFormatter implements FormatterInterface
         return $this->formatAsString();
     }
 
-    protected function formatAsString(?string $format = null)
+    protected function formatAsString(?string $format = null) : string
     {
         return Regex::replace(
             [
