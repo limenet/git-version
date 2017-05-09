@@ -11,7 +11,8 @@
 ```php
 <?php
 
-use limenet\GitVersion\Version;
+use limenet\GitVersion\Directory;
+use limenet\GitVersion\File;
 use limenet\GitVersion\Formatters\SemverFormatter;
 
 $directory = new Directory($baseDir);
