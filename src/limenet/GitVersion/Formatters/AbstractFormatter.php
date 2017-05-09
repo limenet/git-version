@@ -38,11 +38,13 @@ abstract class AbstractFormatter implements FormatterInterface
                 '{{tag}}',
                 '{{branch}}',
                 '{{commit}}',
+                '{{commit_short}}',
             ],
             [
                 $this->data['tag'],
                 $this->data['branch'],
                 $this->data['commit'],
+                $this->data['commit_short'],
             ],
             $format ?? $this->format
         )->result();

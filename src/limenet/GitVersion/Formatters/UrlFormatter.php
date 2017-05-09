@@ -20,7 +20,7 @@ class UrlFormatter extends AbstractFormatter
 
     public function __toString() : string
     {
-        $version = array_key_exists('version', $this->data) ? $this->data['version'] : $this->data['commit'];
+        $version = array_key_exists('version', $this->data) ? $this->data['version'] : $this->data['commit_short'];
         $versionQuery = 'v='.$version;
 
         $uri = HttpUri::createFromString($this->data['base'] ?? 'http://example.com');

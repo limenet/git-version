@@ -57,6 +57,7 @@ abstract class AbstractVersion
 
         $this->resolveBase();
         $this->resolve();
+        $this->resolvePost();
 
         $this->formatter->setData($this->data);
 
@@ -92,10 +93,13 @@ abstract class AbstractVersion
             $this->data[$key] = $datum;
         }
 
-        $this->data['commit_short'] = substr($this->data['commit'], 0, 8);
-
         $this->resolved = true;
     }
 
-    abstract protected function resolve();
+    protected function resolvePost() : void
+    {
+        $this->data['commit_short'] = substr($this->data['commit'], 0, 8);
+    }
+
+    abstract protected function resolve() : void;
 }

@@ -37,11 +37,12 @@ class Helpers
     public static function assertSemver($obj, AbstractVersion $version)
     {
         $v = $version->get(new SemverFormatter());
+
         $obj->assertNotEmpty($v);
         $obj->assertNotEmpty($version->get(new CustomFormatter('{tag}')));
         $obj->assertNotEmpty($version->get(new CustomFormatter('{commit}')));
         $obj->assertNotEmpty($version->get(new CustomFormatter('{commit_short}')));
-        $obj->assertTrue(strlen($version->get(new CustomFormatter('{commit_short}'))) < strlen($version->get(new CustomFormatter('{commit}'))));
+        $obj->assertLessThan(strlen($version->get(new CustomFormatter('{commit}'))), strlen($version->get(new CustomFormatter('{commit_short}'))));
 
         $vv = (new VersionParser())->normalize($v);
         $obj->assertInternalType('string', $v);

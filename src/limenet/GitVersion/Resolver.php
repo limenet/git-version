@@ -37,7 +37,7 @@ class Resolver
 
     public function getCommitFile() : string
     {
-        $commit = $this->runCommandInBasepath('git log -n 1 --format=%h '.basename($this->target));
+        $commit = $this->runCommandInBasepath('git log -n 1 --format=%H '.basename($this->target));
 
         return $commit;
     }
