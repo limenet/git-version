@@ -1,7 +1,7 @@
 {
     "name": "limenet/git-version",
     "description": "PHP library to generate a version string based on a Git repository.",
-    "type": "liibrary",
+    "type": "library",
     "require": {
         "league/uri": "^5.0",
         "spatie/regex": "^1.1"
