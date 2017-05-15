@@ -15,6 +15,9 @@ class File extends AbstractVersion
             $commit = null;
         }
 
-        $this->data['commit'] = $commit;
+        $this->setExtraData([
+            'commit' => $commit,
+            'file' => pathinfo($this->target, PATHINFO_BASENAME)
+        ]);
     }
 }

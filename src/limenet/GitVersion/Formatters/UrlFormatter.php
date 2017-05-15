@@ -34,8 +34,16 @@ class UrlFormatter extends AbstractFormatter
         if (array_key_exists('port', $this->data)) {
             $uri = $uri->withPort($this->data['port']);
         }
-        if (array_key_exists('path', $this->data)) {
-            $uri = $uri->withPath($this->data['path']);
+        if (array_key_exists('file', $this->data)) {
+            if (array_key_exists('path', $this->data)) {
+                $uri = $uri->withPath($this->data['path'].'/'.$this->data['file']);
+            } else {
+                $uri = $uri->withPath('/'.$this->data['file']);
+            }
+        } else {
+            if (array_key_exists('path', $this->data)) {
+                $uri = $uri->withPath($this->data['path']);
+            }
         }
         if (array_key_exists('query', $this->data)) {
             $uri = $uri->withQuery($this->data['query'].'&'.$versionQuery);

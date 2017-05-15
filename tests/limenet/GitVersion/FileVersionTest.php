@@ -41,16 +41,40 @@ class FileVersionTest extends TestCase
 
         $version = new File($dir.'/Facades/Auth.php');
 
-        $url = $version->get(new UrlFormatter(
-            [
-                'scheme' => 'https',
-                'host'   => 'limenet.ch',
-                'port'   => 8443,
-                'path'   => '/foo/bar',
-                'query'  => 'foo=bar',
-            ]
-        ));
+        $urlProps = [
+            'scheme' => 'https',
+            'host'   => 'limenet.ch',
+            'port'   => 8443,
+            'path'   => '/foo/bar',
+            'query'  => 'baz=foobar',
+        ];
+
+        $url = $version->get(new UrlFormatter($urlProps));
+
         $this->assertSame($url, filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED | FILTER_FLAG_PATH_REQUIRED | FILTER_FLAG_QUERY_REQUIRED));
+
+        foreach ($urlProps as $key => $value) {
+            $this->assertContains((string) $value, $url, 'URL property '.$key.' missing from the generated URL');
+        }
+    }
+
+    public function testUrlContainsFilenameOnly() : void
+    {
+        $dir = Helpers::clone('https://github.com/illuminate/support');
+
+        $version = new File($dir.'/Facades/Auth.php', ['base' => 'https://limenet.ch']);
+
+        $this->assertContains('Auth.php', $version->get(new UrlFormatter()));
+        $this->assertNotContains('Facades', $version->get(new UrlFormatter()));
+    }
+
+    public function testUrlDoesNotContainPath() : void
+    {
+        $dir = Helpers::clone('https://github.com/illuminate/support');
+
+        $version = new File($dir.'/Facades/Auth.php', ['base' => 'https://limenet.ch']);
+
+        $this->assertNotContains(pathinfo($dir, PATHINFO_BASENAME), $version->get(new UrlFormatter()));
     }
 
     public function testUrlFormattingCustomVersion() : void
