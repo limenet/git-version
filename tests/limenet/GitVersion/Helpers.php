@@ -2,11 +2,11 @@
 
 namespace limenet\GitVersion;
 
-use Spatie\Regex\Regex;
 use Composer\Semver\VersionParser;
 use limenet\GitVersion\Formatters\CustomFormatter;
 use limenet\GitVersion\Formatters\SemverFormatter;
 use Ramsey\Uuid\Uuid;
+use Spatie\Regex\Regex;
 
 class Helpers
 {
