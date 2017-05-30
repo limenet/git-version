@@ -2,6 +2,7 @@
 
 namespace limenet\GitVersion;
 
+use Spatie\Regex\Regex;
 use Composer\Semver\VersionParser;
 use limenet\GitVersion\Formatters\CustomFormatter;
 use limenet\GitVersion\Formatters\SemverFormatter;
@@ -9,29 +10,35 @@ use Ramsey\Uuid\Uuid;
 
 class Helpers
 {
+    private static $clones = [];
+
     public static function clone($repo)
     {
-        $dir = Uuid::uuid4()->toString();
+        if (!array_key_exists($repo, self::$clones)) {
+            $dir = Uuid::uuid4()->toString();
 
-        $descriptorspec = [
-           0 => ['pipe', 'r'],  // stdin
-           1 => ['pipe', 'w'],  // stdout
-           2 => ['pipe', 'w'],  // stderr
-        ];
+            $descriptorspec = [
+               0 => ['pipe', 'r'],  // stdin
+               1 => ['pipe', 'w'],  // stdout
+               2 => ['pipe', 'w'],  // stderr
+            ];
 
-        $process = proc_open('git clone '.$repo.' '.$dir, $descriptorspec, $pipes, sys_get_temp_dir());
+            $process = proc_open('git clone '.$repo.' '.$dir, $descriptorspec, $pipes, sys_get_temp_dir());
 
-        trim(stream_get_contents($pipes[2]));
+            trim(stream_get_contents($pipes[2]));
 
-        fclose($pipes[0]);
-        fclose($pipes[1]);
-        fclose($pipes[2]);
+            fclose($pipes[0]);
+            fclose($pipes[1]);
+            fclose($pipes[2]);
 
-        // It is important that you close any pipes before calling
-        // proc_close in order to avoid a deadlock
-        proc_close($process);
+            // It is important that you close any pipes before calling
+            // proc_close in order to avoid a deadlock
+            proc_close($process);
 
-        return sys_get_temp_dir().'/'.$dir;
+            self::$clones[$repo] = sys_get_temp_dir().'/'.$dir;
+        }
+
+        return self::$clones[$repo];
     }
 
     public static function assertSemver($obj, AbstractVersion $version)
