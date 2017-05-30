@@ -47,6 +47,9 @@ class Helpers
 
         $obj->assertNotEmpty($v);
         $obj->assertNotEmpty($version->get(new CustomFormatter('{tag}')));
+        $obj->assertNotEmpty($version->get(new CustomFormatter('{tag_semver}')));
+        $obj->assertFalse(Regex::match('/[^0-9A-Za-z-]/', '-', $version->get(new CustomFormatter('{tag_semver}')))->hasMatch());
+        $obj->assertSame(strlen($version->get(new CustomFormatter('{tag}'))), strlen($version->get(new CustomFormatter('{tag_semver}'))));
         $obj->assertNotEmpty($version->get(new CustomFormatter('{commit}')));
         $obj->assertNotEmpty($version->get(new CustomFormatter('{commit_short}')));
         $obj->assertLessThan(strlen($version->get(new CustomFormatter('{commit}'))), strlen($version->get(new CustomFormatter('{commit_short}'))));

@@ -2,6 +2,7 @@
 
 namespace limenet\GitVersion;
 
+use Spatie\Regex\Regex;
 use InvalidArgumentException;
 use limenet\GitVersion\Formatters\FormatterInterface;
 use RuntimeException;
@@ -99,6 +100,13 @@ abstract class AbstractVersion
     protected function resolvePost() : void
     {
         $this->data['commit_short'] = substr($this->data['commit'], 0, 8);
+
+        if(strpos($this->data['tag'], '+') !== false) {
+            $parts = explode('+', $this->data['tag'], 2);
+            $this->data['tag_semver'] = $parts[0].'+'.Regex::replace('/[^0-9A-Za-z-]/', '-', $parts[1])->result();
+        } else {
+            $this->data['tag_semver'] = $this->data['tag'];
+        }
     }
 
     abstract protected function resolve() : void;

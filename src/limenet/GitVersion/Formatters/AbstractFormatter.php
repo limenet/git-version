@@ -36,12 +36,14 @@ abstract class AbstractFormatter implements FormatterInterface
         return Regex::replace(
             [
                 '{{tag}}',
+                '{{tag_semver}}',
                 '{{branch}}',
                 '{{commit}}',
                 '{{commit_short}}',
             ],
             [
                 $this->data['tag'],
+                $this->data['tag_semver'],
                 $this->data['branch'],
                 $this->data['commit'],
                 $this->data['commit_short'],
