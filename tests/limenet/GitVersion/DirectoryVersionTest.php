@@ -16,15 +16,6 @@ class DirectoryVersionTest extends TestCase
         Helpers::assertSemver($this, $version);
     }
 
-    public function testSemverValidBuildData() : void
-    {
-        $dir = Helpers::clone('https://github.com/limenet/just-in-time');
-
-        $version = new Directory($dir);
-
-        Helpers::assertSemver($this, $version);
-    }
-
     public function testNoTags() : void
     {
         $dir = Helpers::clone('https://github.com/Roave/SecurityAdvisories');
