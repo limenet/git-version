@@ -8,6 +8,8 @@
 
 ## Usage
 
+### Standalone
+
 ```php
 <?php
 
@@ -21,4 +23,10 @@ $version = $directory->get(new SemverFormatter());
 $file = new File($baseDir);
 $version = $file->get(new SemverFormatter());
 
+```
+
+### Laravel
+
+```php
+$version = GitVersion::get();
 ```
