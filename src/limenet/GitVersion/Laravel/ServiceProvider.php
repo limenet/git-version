@@ -10,11 +10,13 @@ class ServiceProvider extends BaseProvider
 {
     public function provides()
     {
-        return ['git-version'];
+        return [GitVersion::class];
     }
 
-    public static function get()
+    public function register()
     {
-        return (new Directory(base_path()))->get(new SemverFormatter());
+        $this->app->singleton(GitVersion::class, function ($app) {
+            return new GitVersion();
+        });
     }
 }

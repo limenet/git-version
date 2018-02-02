@@ -8,6 +8,6 @@ class Facade extends BaseFacade
 {
     protected static function getFacadeAccessor()
     {
-        return 'git-version';
+        return GitVersion::class;
     }
 }
