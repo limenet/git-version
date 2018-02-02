@@ -32,5 +32,13 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["limenet\\GitVersion\\Laravel\\ServiceProvider"],
+            "aliases": {
+                "GitVersion": "limenet\\GitVersion\\Laravel\\Facade"
+            }
+        }
     }
 }
