@@ -12,6 +12,7 @@ class ServiceProvider extends BaseProvider
     {
         return ['git-version'];
     }
+
     public static function get()
     {
         return (new Directory(base_path()))->get(new SemverFormatter());
