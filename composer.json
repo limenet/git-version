@@ -11,6 +11,7 @@
         "composer/semver": "^1.4",
         "illuminate/support": "5.5.*",
         "moontoast/math": "^1.1",
+        "orchestra/testbench": "^3.5",
         "phpunit/phpunit": "^6.1",
         "ramsey/uuid": "^3.6"
     },
