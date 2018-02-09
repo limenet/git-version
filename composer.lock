@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "22d2ff1417c66ad945abd141f85d34f9",
+    "content-hash": "bc4409c7d34583e60c352d16dd28fb9a",
     "packages": [
         {
             "name": "league/uri",
@@ -266,20 +266,20 @@
         },
         {
             "name": "league/uri-manipulations",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri-manipulations.git",
-                "reference": "e8ad43a956234a78763cc44fa16ddebeb1f4fbf4"
+                "reference": "7b1344490a293e2bd2a313afc6a95927cec4c2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri-manipulations/zipball/e8ad43a956234a78763cc44fa16ddebeb1f4fbf4",
-                "reference": "e8ad43a956234a78763cc44fa16ddebeb1f4fbf4",
+                "url": "https://api.github.com/repos/thephpleague/uri-manipulations/zipball/7b1344490a293e2bd2a313afc6a95927cec4c2b3",
+                "reference": "7b1344490a293e2bd2a313afc6a95927cec4c2b3",
                 "shasum": ""
             },
             "require": {
-                "league/uri-components": "^1.4.1",
+                "league/uri-components": "^1.7.0",
                 "league/uri-interfaces": "^1.0",
                 "php": ">=7.0",
                 "psr/http-message": "^1.0"
@@ -334,7 +334,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-11-24T08:17:41+00:00"
+            "time": "2018-02-06T11:37:57+00:00"
         },
         {
             "name": "league/uri-parser",
@@ -1010,16 +1010,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ef7880e665390f999f4def7c9f78133636f973cf"
+                "reference": "1de7c0aec13eadbdddc2d1ba4019b064b2c6b966"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ef7880e665390f999f4def7c9f78133636f973cf",
-                "reference": "ef7880e665390f999f4def7c9f78133636f973cf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/1de7c0aec13eadbdddc2d1ba4019b064b2c6b966",
+                "reference": "1de7c0aec13eadbdddc2d1ba4019b064b2c6b966",
                 "shasum": ""
             },
             "require": {
@@ -1140,7 +1140,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-01-30T15:06:13+00:00"
+            "time": "2018-02-06T15:36:55+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1553,16 +1553,16 @@
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v3.5.6",
+            "version": "v3.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "98664ac917c10f744181ca50796faea264f1efb2"
+                "reference": "5ce308f91e2178cd1c03da02445f4093d4384fd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/98664ac917c10f744181ca50796faea264f1efb2",
-                "reference": "98664ac917c10f744181ca50796faea264f1efb2",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/5ce308f91e2178cd1c03da02445f4093d4384fd6",
+                "reference": "5ce308f91e2178cd1c03da02445f4093d4384fd6",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2018-01-06T15:40:19+00:00"
+            "time": "2018-02-07T08:39:46+00:00"
         },
         {
             "name": "paragonie/random_compat",
