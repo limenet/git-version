@@ -51,7 +51,7 @@ class FileVersionTest extends TestCase
 
         $url = $version->get(new UrlFormatter($urlProps));
 
-        $this->assertSame($url, filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED | FILTER_FLAG_PATH_REQUIRED | FILTER_FLAG_QUERY_REQUIRED));
+        $this->assertSame($url, filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED | FILTER_FLAG_QUERY_REQUIRED));
 
         foreach ($urlProps as $key => $value) {
             $this->assertContains((string) $value, $url, 'URL property '.$key.' missing from the generated URL');
