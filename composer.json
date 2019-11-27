@@ -9,7 +9,7 @@
   "require-dev": {
     "php": "^7.1",
     "composer/semver": "^1.4",
-    "illuminate/support": "5.5.* || 5.6.* || 5.7.*",
+    "illuminate/support": "5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0",
     "moontoast/math": "^1.1",
     "orchestra/testbench": "^3.5",
     "phpunit/phpunit": "^6.1 || ^7.0",
