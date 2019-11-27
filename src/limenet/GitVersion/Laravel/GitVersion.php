@@ -9,6 +9,8 @@ class GitVersion
 {
     public static function get()
     {
-        return (new Directory(base_path()))->get(new SemverFormatter());
+        return Cache::rememberForever('limenet.gitversion.get', function () {
+            return (new Directory(base_path()))->get(new SemverFormatter());
+        });
     }
 }
