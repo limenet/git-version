@@ -2,9 +2,9 @@
 
 namespace limenet\GitVersion\Laravel;
 
+use Cache;
 use limenet\GitVersion\Directory;
 use limenet\GitVersion\Formatters\SemverFormatter;
-use Cache;
 
 class GitVersion
 {
